@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <title>Atendimento CAA - Senhas</title>
+</head>
+<div class="containerVid">
+        <img src="fad.png" class="fadergs">    
+        <video width="880", height=" 720" src="CAA.mp4"
+        muted
+        autoplay
+        loop>
+        </video>
+</div>
+<body>
+    <div class="containerSenha">
+        <div class="letreiro"> 
+            <div class="caa">
+                <h1>CAA <br> Senha</h1>
+                <br>
+                <h2 id="senha"> 000 </h2>
+            </div> 
+
+        </div>
+    </div>
+   
+    <script>
+            
+    const vSenha = document.querySelector('senha');
+    let senha = localStorage.getItem('senha'); 
+    let ultimaSenha = localStorage.getItem('ultimaSenha');
+
+    if(!senha){
+        senha= 0;
+    };
+    if (!ultimaSenha){
+        ultimaSenha = 'S';
+    };
+
+    mostrarSenha();
+
+
+    window.addEventListener('keydown', function(e) {
+        if(e.key == 's' || e.key == 'S'){
+            senha++;
+            ultimaSenha = 'S';
+        }
+
+
+        localStorage.setItem('senha', senha);
+        localStorage.setItem('ultimaSenha' , ultimaSenha);
+        mostrarSenha();
+    });
+
+    function mostrarSenha() {
+        if(ultimaSenha == 'S') {
+            vSenha.innerHTML = 'S' + parseint(senha).toLocaleString('pt-br', {minimumIntegerDigits: 3});
+            }
+        };
+    </script>
+</body>
+</html>
